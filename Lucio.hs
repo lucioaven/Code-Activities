@@ -1,44 +1,53 @@
---Ejercicio 6 (Prod carteciano)
-productoCarteciano :: (Num a) => (a ,a) -> (a, a) -> a
-productoCarteciano (x1 ,y1) (x2 ,y2) = (x1*x2) + (y1*y2)
+listad :: [Int] -> Int  
+listad [] = 0
+listad (x:xs) = x + listad xs
 
---Ejercicio 7 (Valor absoluto)
-valorAbsoluto :: Int -> Int
-valorAbsoluto x = if (x<0) then -x else x 
+escalar :: (Int, Int) -> (Int, Int) -> Int
+escalar (x1,y1) (x2,y2) = x1*x2+y1*y2
 
---Ejercicio 8 (Suma de lista, con pm)
-sumaLista :: (Num a) => [a] -> a
-sumaLista [] = 0
-sumaLista (x:xs) = x + sumaLista xs
+absp :: Int->Int
+absp n |n > 0 = n
+       |n < 0 = n*(-1)
+       |n == 0 = n
 
---Ejercicio 9 
-curri :: Int -> Int -> Int
-curri x y = (x^y)
+sumD :: [Int]->Int
+sumD [] = 0
+sumD (x:xs) = x + sumD xs
 
---Ejercicio 10
-currif :: Int -> Int 
-currif x = curri 2 x
+poten :: Int->Int->Int
+poten x y = x^y
 
---Ejercicio 11
-sumTres :: (Num a) =>  a -> a -> a -> a
-sumTres  x y z = (x+y+z)
+--ACT 10
+poten2:: Int -> Int
+poten2 = poten 2
 
---Ejercicio 12
-addFour :: (Num a) => a -> a -> a
-addFour x y = sumTres x y 4
+curr1:: Int -> Int -> Int -> Int
+curr1 x y z = x+y+z
 
---Ejercicio 15 
-belongs e [] = False
-belongs e ( a : as ) = belongs e as || ( a == e )
+curr2:: Int -> Int -> Int
+curr2 = curr1 4
 
---Ejercicio 16
-fib :: Int -> Int 
-fib x
-    |x<=0 = 0 --Caso base
-    |x == 1 = 1 --Caso base 
-    |otherwise = fib(x-1) + fib(x-2) --Hipotesis Inductiva
+--ACT 13
+zeros:: [Int] -> Int -> Bool
+zeros a 0 =  True
+zeros a n = zeros a (n-1) && (a!!(n-1) == 0)
 
---Ejercicio 17 
-length' :: [a] -> Int
-length'  [] = 0
-length' ( _ : xs ) = 1 + length' xs
+factorial1:: Integer -> Integer
+factorial1 0=1
+factorial1 n = n*factorial1 (n-1) 
+
+--ACT 15
+fibx:: Int -> (Int, Int) -> Int
+fibx 0 (x,y) = y
+fibx n (x,y) = fibx (n-1) (y, x+y) 
+
+fib:: Int -> Int
+fib x = fibx(x) (0,1)
+
+--ACT
+lenghtt:: [Int] -> Int
+lenghtt [] = 0
+lenghtt (_:xs) = 1+ lenghtt xs
+
+sumaa[]=0
+sumaa(x:xs) = x+ sumaa xs
